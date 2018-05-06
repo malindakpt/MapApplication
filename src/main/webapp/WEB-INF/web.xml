@@ -5,37 +5,25 @@
 
 	<display-name>Spring MVC Application</display-name>
 
-	<!--School Management Start-->
-
 	<servlet>
-		<servlet-name>AddStudent</servlet-name>
-		<servlet-class>servlet.AddStudent</servlet-class>
+		<servlet-name>SaveLocation</servlet-name>
+		<servlet-class>servlet.SaveLocation</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>AddStudent</servlet-name>
-		<url-pattern>/AddStudent</url-pattern>
+		<servlet-name>SaveLocation</servlet-name>
+		<url-pattern>/SaveLocation</url-pattern>
 	</servlet-mapping>
-
-
-	<!--School Management End-->
-
 
 	<servlet>
 		<servlet-name>mvc-dispatcher</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>mvc-dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-	<context-param>
-		<description>Location to store uploaded file</description>
-		<param-name>file-upload</param-name>
-		<param-value>
-			c:\Users\malindak\Desktop\IKMAN\
-		</param-value>
-	</context-param>
 
 </web-app>

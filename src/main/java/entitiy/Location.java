@@ -1,8 +1,8 @@
 package entitiy;
 
-import javax.persistence.Column;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import entitiy.BaseEntity.Entity;
+
+import javax.persistence.*;
 
 /**
  * Created by MalindaK on 5/7/2018.
@@ -10,10 +10,22 @@ import javax.persistence.UniqueConstraint;
 @javax.persistence.Entity
 @Table(name = "location", catalog = "map", uniqueConstraints = {
         @UniqueConstraint(columnNames = "id")})
-public class Location {
+public class Location extends Entity {
+
+
     private String name;
-    private float lan;
+    private float lat;
     private float lon;
+
+    public Location(){}
+    public Location(String name, float lat, float lon){
+        this.name = name;
+        this.lat = lat;
+        this.lon = lon;
+    }
+
+
+
 
     @Column(name = "name", nullable = true, length = 40)
     public String getName() {
@@ -24,13 +36,13 @@ public class Location {
         this.name = name;
     }
 
-    @Column(name = "lan", nullable = true, length = 40)
-    public float getLan() {
-        return lan;
+    @Column(name = "lat", nullable = true, length = 40)
+    public float getLat() {
+        return lat;
     }
 
-    public void setLan(float lan) {
-        this.lan = lan;
+    public void setLat(float lat) {
+        this.lat = lat;
     }
 
     @Column(name = "lon", nullable = true, length = 40)

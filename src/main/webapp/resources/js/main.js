@@ -1,3 +1,18 @@
+function saveLocation() {
+    $.post('SaveLocation',
+        {
+            name: $('#name').val(),
+            lat: $('#lat').val(),
+            lon: $('#lon').val()
+        },
+        function (result) {
+
+        }).fail(function () {
+            swal("Error", "Unexpected error occured", "error");
+        }
+    );
+}
+
 function getAndSetPage(page, to, skipBusy) {
     if (!skipBusy) {
         busyOn();
