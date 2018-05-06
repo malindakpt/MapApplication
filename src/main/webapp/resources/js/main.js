@@ -1,4 +1,5 @@
 function saveLocation() {
+    $('#addLocationModal').hide();
     $.post('SaveLocation',
         {
             name: $('#name').val(),
@@ -6,38 +7,47 @@ function saveLocation() {
             lon: $('#lon').val()
         },
         function (result) {
-
+            getAndSetPage('ManageLocations');
         }).fail(function () {
             swal("Error", "Unexpected error occured", "error");
         }
     );
 }
 
-function getAndSetPage(page, to, skipBusy) {
-    if (!skipBusy) {
-        busyOn();
+function deleteLocation(id) {
+
+    var result = confirm("Are you sure you need to delete this?");
+    if (result == true) {
+        $.post('DeleteLocation',
+            {
+                id: id,
+            },
+            function (result) {
+                getAndSetPage('ManageLocations');
+            }).fail(function () {
+                swal("Error", "Unexpected error occured", "error");
+            }
+        )
     }
+}
+
+function getAndSetPage(page) {
+    busyOn();
     $.get(page, {},
         function (result) {
-            if (to) {
-                $('#' + to + '').html(result);
-            } else {
-                $('#home-middle').html(result);
-            }
+            $('#home-middle').html(result);
             busyOff();
         }).fail(function () {
-            alert("error");
+            alert("Failed to load "+page);
             busyOff();
         }
     );
 }
 
 function busyOn() {
-    // document.getElementById("myOverlay2").style.display = "block";
     document.getElementById("busyIcon").style.display = "block";
 }
 
 function busyOff() {
-    // document.getElementById("myOverlay2").style.display = "none";
     document.getElementById("busyIcon").style.display = "none";
 }
