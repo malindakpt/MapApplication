@@ -1,6 +1,6 @@
 package servlet;
-import entity.User;
-import entityManager.EntityManager;
+import entitiy.User;
+import manager.EntityManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,8 +16,8 @@ public class AddStudent extends HttpServlet {
                        HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        User user1 = new User();
-        EntityManager.add(user1);
+//        User user1 = new User();
+//        EntityManager.add(user1);
 
     }
 

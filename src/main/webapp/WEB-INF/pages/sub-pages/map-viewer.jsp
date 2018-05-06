@@ -7,14 +7,38 @@
 
 <div id="map"></div>
 <script>
+    var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var labelIndex = 0;
     function initMap(){
-        var uluru = {lat: 7.036175, lng: 79.957909};
+        var bangalore = { lat: 12.97, lng: 77.59 };
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 10,
-            center: uluru
+            zoom: 12,
+            center: bangalore
         });
+//        var map = new google.maps.Map(document.getElementById('map'), {
+//            zoom: 10,
+//            center: uluru
+//        });
+//        var marker = new google.maps.Marker({
+//            position: uluru,
+//            map: map
+//        });
+
+        addMarker(bangalore, map);
+    }
+
+    // Adds a marker to the map.
+    function addMarker(location, map) {
+        // Add the marker at the clicked location, and add the next-available label
+        // from the array of alphabetical characters.
         var marker = new google.maps.Marker({
-            position: uluru,
+            position: location,
+            label: {
+                text: "Malinda",
+                color: "#061b7a",
+                fontSize: "20px",
+                fontWeight: "bold"
+            },
             map: map
         });
     }

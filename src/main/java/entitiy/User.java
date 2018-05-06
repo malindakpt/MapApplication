@@ -1,4 +1,4 @@
-package entity;
+package entitiy;
 
 import javax.persistence.*;
 
@@ -9,7 +9,7 @@ import javax.persistence.*;
 @javax.persistence.Entity
 @Table(name = "user", catalog = "school", uniqueConstraints = {
         @UniqueConstraint(columnNames = "userId")})
-public class User extends Entity {
+public class User extends entitiy.BaseEntity.Entity {
     private int userId;
     private int memberId;
     private String name;

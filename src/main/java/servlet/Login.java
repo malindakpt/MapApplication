@@ -3,8 +3,8 @@ package servlet; /**
  */
 // Import required java libraries
 
-import entity.User;
-import entityManager.EntityManager;
+import entitiy.User;
+import manager.EntityManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,25 +21,25 @@ public class Login extends HttpServlet {
                        HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        try {
-
-            String userName = request.getParameter("userName");
-            String password = request.getParameter("password");
-
-            User user = (User) EntityManager.getEntity2(User.class,"userName",userName, "password",password);
-
-            if(user!=null) {
-                String sessionId = user.getUserId()+""+Calendar.getInstance().getTimeInMillis();
-                user.setSessionId(sessionId);
-                EntityManager.update(user);
-                out.write("OK,"+sessionId+","+user.getUserId());
-            }else{
-                out.write("NO,");
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+//        try {
+//
+//            String userName = request.getParameter("userName");
+//            String password = request.getParameter("password");
+//
+//            User user = (User) EntityManager.getEntity2(User.class,"userName",userName, "password",password);
+//
+//            if(user!=null) {
+//                String sessionId = user.getUserId()+""+Calendar.getInstance().getTimeInMillis();
+//                user.setSessionId(sessionId);
+//                EntityManager.update(user);
+//                out.write("OK,"+sessionId+","+user.getUserId());
+//            }else{
+//                out.write("NO,");
+//            }
+//
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
     }
 
     public void doGet(HttpServletRequest request,

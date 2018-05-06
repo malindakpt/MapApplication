@@ -1,4 +1,4 @@
-package AppConfig;
+package factory;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
