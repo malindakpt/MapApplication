@@ -23,6 +23,12 @@ public class Location extends Entity {
         this.lat = lat;
         this.lon = lon;
     }
+    public Location(int id, String name, double lat, double lon){
+        this.id = id;
+        this.name = name;
+        this.lat = lat;
+        this.lon = lon;
+    }
 
 
 

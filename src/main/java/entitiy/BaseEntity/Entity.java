@@ -4,7 +4,7 @@ import javax.persistence.*;
 @MappedSuperclass
 public class Entity  implements java.io.Serializable {
 
-    private int id;
+    public int id;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

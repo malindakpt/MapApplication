@@ -14,7 +14,7 @@ function saveLocation() {
             }
         );
     } else {
-        alert("Invalid Innputs. Please Check !");
+        alert("Invalid Inputs. Please Check Again !");
     }
 }
 

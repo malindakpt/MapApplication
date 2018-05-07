@@ -14,6 +14,13 @@
     margin-bottom: 15px;
 }
 
+.logo-img {
+    width: 100%;
+    margin-bottom: 90px;
+    margin-top: 40px;
+}
+
+
 body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 .w3-row-padding img {margin-bottom: 12px}
 

@@ -4,8 +4,8 @@
 <%@ page import="entitiy.Location" %>
 <%@ page import="manager.MockEntityManager" %>
 <div class="w3-container">
-    <button onclick="$('#addLocationModal').show()" class="w3-button w3-black float-right">Add Location</button>
-    <button class="w3-button w3-circle w3-black float-right">+</button>
+    <button onclick="$('#addLocationModal').show()" class="w3-button w3-black float-right"><i class="fa fa-plus-circle"></i> Add Location</button>
+    <!--<button onclick="$('#addLocationModal').show()" class="w3-button w3-circle w3-black float-right">+</button>-->
     <h2>Location Manager</h2>
     <p>Add or Remove the locations to map according to your preference</p>
 
