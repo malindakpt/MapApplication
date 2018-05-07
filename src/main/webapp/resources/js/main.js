@@ -32,6 +32,7 @@ function deleteLocation(id) {
 }
 
 function getAndSetPage(page) {
+    $('#home-middle').html('');
     busyOn();
     $.get(page, {},
         function (result) {
