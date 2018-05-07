@@ -14,11 +14,11 @@ public class Location extends Entity {
 
 
     private String name;
-    private float lat;
-    private float lon;
+    private double lat;
+    private double lon;
 
     public Location(){}
-    public Location(String name, float lat, float lon){
+    public Location(String name, double lat, double lon){
         this.name = name;
         this.lat = lat;
         this.lon = lon;
@@ -37,20 +37,20 @@ public class Location extends Entity {
     }
 
     @Column(name = "lat", nullable = true, length = 40)
-    public float getLat() {
+    public double getLat() {
         return lat;
     }
 
-    public void setLat(float lat) {
+    public void setLat(double lat) {
         this.lat = lat;
     }
 
     @Column(name = "lon", nullable = true, length = 40)
-    public float getLon() {
+    public double getLon() {
         return lon;
     }
 
-    public void setLon(float lon) {
+    public void setLon(double lon) {
         this.lon = lon;
     }
 }

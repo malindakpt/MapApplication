@@ -2,18 +2,20 @@
 <%@ page import="java.util.List" %>
 <%@ page import="manager.EntityManager" %>
 <%@ page import="entitiy.Location" %>
+<%@ page import="manager.MockEntityManager" %>
 <div class="w3-container">
     <button onclick="$('#addLocationModal').show()" class="w3-button w3-black float-right">Add Location</button>
-    <h2>W3.CSS Modal</h2>
-    <p>Add the w3-card-* class to the w3-modal-content container to display the modal as a card.</p>
+    <button class="w3-button w3-circle w3-black float-right">+</button>
+    <h2>Location Manager</h2>
+    <p>Add or Remove the locations to map according to your preference</p>
 
 
     <div id="addLocationModal" class="w3-modal">
         <div class="w3-modal-content w3-card-4 add-modal">
-            <header class="w3-container w3-teal">
+            <header class="w3-container w3-blue">
         <span onclick="$('#addLocationModal').hide()"
               class="w3-button w3-display-topright">&times;</span>
-                <h2>Modal Header</h2>
+                <h2>Add Location</h2>
             </header>
             <div class="w3-container">
                 <p>
@@ -29,20 +31,18 @@
 
 
             </div>
-            <footer class="w3-container w3-teal">
+            <footer class="w3-container w3-light-gray">
                 <p>
-                    <button class="w3-btn w3-blue" onclick="saveLocation()">Save</button>
+                    <button class="w3-btn w3-blue save-button" onclick="saveLocation()">Save</button>
                 </p>
             </footer>
         </div>
     </div>
 
-
+    <br>
 
     <div class="w3-container">
-        <h2>Striped Bordered Table</h2>
-
-        <table class="w3-table w3-striped w3-bordered">
+       <table class="w3-table w3-striped w3-bordered">
             <tr>
                 <th>Location Name</th>
                 <th>Lattitude</th>
@@ -51,7 +51,7 @@
             </tr>
 
             <%
-                List<Entity> locations = EntityManager.getInstance().getEntities(Location.class);
+                List<Entity> locations = MockEntityManager.getInstance().getEntities(Location.class);
                 for (Entity entity: locations ) {
                     Location loc = (Location)entity;
 

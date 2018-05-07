@@ -2,6 +2,7 @@ package servlet;
 
 import entitiy.Location;
 import manager.EntityManager;
+import manager.MockEntityManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +23,7 @@ public class SaveLocation extends HttpServlet {
             Float lon = Float.parseFloat(request.getParameter("lon"));
 
             Location location = new Location(name, lat, lon);
-            EntityManager.getInstance().add(location);
+            MockEntityManager.getInstance().add(location);
         } catch (Exception e){
 
         }

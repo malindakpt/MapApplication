@@ -1,17 +1,21 @@
 function saveLocation() {
-    $('#addLocationModal').hide();
-    $.post('SaveLocation',
-        {
-            name: $('#name').val(),
-            lat: $('#lat').val(),
-            lon: $('#lon').val()
-        },
-        function (result) {
-            getAndSetPage('ManageLocations');
-        }).fail(function () {
-            swal("Error", "Unexpected error occured", "error");
-        }
-    );
+    if(!isNaN($('#lat').val()) && !isNaN($('#lon').val()) && $('#name').val() !== '') {
+        $('#addLocationModal').hide();
+        $.post('SaveLocation',
+            {
+                name: $('#name').val(),
+                lat: $('#lat').val(),
+                lon: $('#lon').val()
+            },
+            function (result) {
+                getAndSetPage('ManageLocations');
+            }).fail(function () {
+                swal("Error", "Unexpected error occured", "error");
+            }
+        );
+    } else {
+        alert("Invalid Innputs. Please Check !");
+    }
 }
 
 function deleteLocation(id) {

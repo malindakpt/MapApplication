@@ -2,6 +2,7 @@ package servlet;
 
 import entitiy.Location;
 import manager.EntityManager;
+import manager.MockEntityManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +17,7 @@ public class DeleteLocation extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-            EntityManager.getInstance().delete(Location.class, id);
+            MockEntityManager.getInstance().delete(Location.class, id);
         } catch (Exception e){
 
         }

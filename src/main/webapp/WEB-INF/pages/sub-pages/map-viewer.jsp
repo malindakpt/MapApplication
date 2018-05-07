@@ -2,6 +2,7 @@
 <%@ page import="manager.EntityManager" %>
 <%@ page import="java.util.List" %>
 <%@ page import="entitiy.Location" %>
+<%@ page import="manager.MockEntityManager" %>
 <style>
     #map {
         height: 400px;
@@ -20,11 +21,11 @@
         });
 
         <%
-             List<Entity> locations = EntityManager.getInstance().getEntities(Location.class);
+             List<Entity> locations = MockEntityManager.getInstance().getEntities(Location.class);
              for (Entity entity: locations ) {
                  Location loc = (Location)entity;
 
-         %>
+        %>
                 var place = { lat: <%=loc.getLat()%>, lng:  <%=loc.getLon()%> };
                 addMarker(place, map, "<%=loc.getName()%>");
         <%
@@ -33,20 +34,17 @@
     }
 
     // Adds a marker to the map.
-    function addMarker(location, map, lable) {
-        // Add the marker at the clicked location, and add the next-available label
-        // from the array of alphabetical characters.
-        var marker = new google.maps.Marker({
+    function addMarker(location, map, label) {
+        new google.maps.Marker({
             position: location,
             label: {
-                text: lable,
+                text: label,
                 color: "#061b7a",
-                fontSize: "20px",
+                fontSize: "17px",
                 fontWeight: "bold"
             },
             map: map
         });
-        console.log(location);
     }
 </script>
 <script async defer
