@@ -1,8 +1,9 @@
 <%@ page import="entitiy.BaseEntity.Entity" %>
-<%@ page import="manager.EntityManager" %>
+<%@ page import="manager.SQLEntityManager" %>
 <%@ page import="java.util.List" %>
 <%@ page import="entitiy.Location" %>
 <%@ page import="manager.MockEntityManager" %>
+<%@ page import="factory.PersistorFactory" %>
 <style>
     #map {
         height: 400px;
@@ -14,14 +15,13 @@
 <script>
 
     function initMap(){
-
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 12,
             center: { lat: 6.9258278, lng:  79.8812892 }
         });
 
         <%
-             List<Entity> locations = MockEntityManager.getInstance().getEntities(Location.class);
+             List<Entity> locations = PersistorFactory.getPersistor().getEntities(Location.class);
              for (Entity entity: locations ) {
                  Location loc = (Location)entity;
 

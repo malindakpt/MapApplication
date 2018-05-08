@@ -2,24 +2,25 @@ package manager;
 
 import entitiy.BaseEntity.Entity;
 import factory.HibernateUtil;
-import org.hibernate.HibernateException;
+import manager.BaseManager.PersistanceInterface;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import java.util.List;
 
 
-public class EntityManager {
+public class SQLEntityManager implements PersistanceInterface {
 
-    private static  EntityManager instance;
+    private static PersistanceInterface instance;
 
-    public static EntityManager getInstance(){
+    public static PersistanceInterface getInstance(){
         if(instance == null){
-            instance = new EntityManager();
+            instance = new SQLEntityManager();
         }
         return instance;
     }
 
+    @Override
     public void add(Entity entity){
         Session session = null;
         try {
@@ -34,6 +35,7 @@ public class EntityManager {
         }
     }
 
+    @Override
     public void delete(Class entity, int value) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
@@ -52,7 +54,7 @@ public class EntityManager {
         }
     }
 
-
+    @Override
     public List<Entity> getEntities(Class entity){
         List<Entity> entities;// = new ArrayList<Entity>();
         Session session = null;
@@ -73,5 +75,4 @@ public class EntityManager {
         }
         return null;
     }
-
 }

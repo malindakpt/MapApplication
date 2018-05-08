@@ -3,6 +3,7 @@ package manager;
 import entitiy.BaseEntity.Entity;
 import entitiy.Location;
 import factory.HibernateUtil;
+import manager.BaseManager.PersistanceInterface;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,7 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 
 
-public class MockEntityManager {
+public class MockEntityManager implements PersistanceInterface{
 
     private static MockEntityManager instance;
     private List<Entity> locations = new ArrayList<Entity>();
@@ -21,18 +22,17 @@ public class MockEntityManager {
     public static MockEntityManager getInstance(){
         if(instance == null){
             instance = new MockEntityManager();
-            instance.getLocations().add(new Location(instance.countIdx++, "Home", 6.925356, 79.880083));
-            instance.getLocations().add(new Location(instance.countIdx++, "School", 7.2945439,80.590676));
-            instance.getLocations().add(new Location(instance.countIdx++, "University", 7.7411541,80.0896846));
-            instance.getLocations().add(new Location(instance.countIdx++, "Work", 6.9513649,80.7458416));
+            instance.loadInitialData();
         }
         return instance;
     }
 
-    public void add(Location entity){
+    @Override
+    public void add(Entity entity){
         this.locations.add(entity);
     }
 
+    @Override
     public void delete(Class entity, int id) {
         for (Iterator<Entity> iter = this.locations.listIterator(); iter.hasNext(); ) {
             Location location = (Location) iter.next();
@@ -42,7 +42,7 @@ public class MockEntityManager {
         }
     }
 
-
+    @Override
     public List<Entity> getEntities(Class entity){
       return this.locations;
     }
@@ -51,11 +51,10 @@ public class MockEntityManager {
         return locations;
     }
 
-    public int getCountIdx() {
-        return countIdx;
-    }
-
-    public void setCountIdx(int countIdx) {
-        this.countIdx = countIdx;
+    private void loadInitialData(){
+        instance.getLocations().add(new Location(instance.countIdx++, "Home", 7.025356, 79.880083));
+        instance.getLocations().add(new Location(instance.countIdx++, "School", 7.2945439,80.590676));
+        instance.getLocations().add(new Location(instance.countIdx++, "University", 7.7411541,80.0896846));
+        instance.getLocations().add(new Location(instance.countIdx++, "Work", 6.9513649,80.7458416));
     }
 }

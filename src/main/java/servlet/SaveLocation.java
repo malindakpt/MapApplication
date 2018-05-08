@@ -1,8 +1,9 @@
 package servlet;
 
 import entitiy.Location;
-import manager.EntityManager;
+import factory.PersistorFactory;
 import manager.MockEntityManager;
+import manager.SQLEntityManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +24,7 @@ public class SaveLocation extends HttpServlet {
             Float lon = Float.parseFloat(request.getParameter("lon"));
 
             Location location = new Location(name, lat, lon);
-            MockEntityManager.getInstance().add(location);
+            PersistorFactory.getPersistor().add(location);
         } catch (Exception e){
 
         }

@@ -1,14 +1,13 @@
 <%@ page import="entitiy.BaseEntity.Entity" %>
 <%@ page import="java.util.List" %>
-<%@ page import="manager.EntityManager" %>
+<%@ page import="manager.SQLEntityManager" %>
 <%@ page import="entitiy.Location" %>
 <%@ page import="manager.MockEntityManager" %>
+<%@ page import="factory.PersistorFactory" %>
 <div class="w3-container">
     <button onclick="$('#addLocationModal').show()" class="w3-button w3-black float-right"><i class="fa fa-plus-circle"></i> Add Location</button>
-    <!--<button onclick="$('#addLocationModal').show()" class="w3-button w3-circle w3-black float-right">+</button>-->
     <h2>Location Manager</h2>
     <p>Add or Remove the locations to map according to your preference</p>
-
 
     <div id="addLocationModal" class="w3-modal">
         <div class="w3-modal-content w3-card-4 add-modal">
@@ -28,8 +27,6 @@
                     <label>longitude</label>
                     <input id="lon" class="w3-input" type="text">
                 </p>
-
-
             </div>
             <footer class="w3-container w3-light-gray">
                 <p>
@@ -51,7 +48,7 @@
             </tr>
 
             <%
-                List<Entity> locations = MockEntityManager.getInstance().getEntities(Location.class);
+                List<Entity> locations = PersistorFactory.getPersistor().getEntities(Location.class);
                 for (Entity entity: locations ) {
                     Location loc = (Location)entity;
 
