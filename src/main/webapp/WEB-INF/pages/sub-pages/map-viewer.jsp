@@ -3,7 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="entitiy.Location" %>
 <%@ page import="manager.MockEntityManager" %>
-<%@ page import="manager.PersistorFactory" %>
+<%@ page import="manager.Persistor" %>
 <style>
     #map {
         height: 400px;
@@ -21,7 +21,7 @@
         });
 
         <%
-             List<Entity> locations = PersistorFactory.getPersistor().getEntities(Location.class);
+             List<Entity> locations = Persistor.getPersistorInstance().getEntities(Location.class);
              for (Entity entity: locations ) {
                  Location loc = (Location)entity;
 

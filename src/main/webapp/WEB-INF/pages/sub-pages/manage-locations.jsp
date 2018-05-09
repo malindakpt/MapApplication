@@ -3,7 +3,7 @@
 <%@ page import="manager.SQLEntityManager" %>
 <%@ page import="entitiy.Location" %>
 <%@ page import="manager.MockEntityManager" %>
-<%@ page import="manager.PersistorFactory" %>
+<%@ page import="manager.Persistor" %>
 <div class="w3-container">
     <button onclick="$('#addLocationModal').show()" class="w3-button w3-black float-right"><i class="fa fa-plus-circle"></i> Add Location</button>
     <h2>Location Manager</h2>
@@ -48,7 +48,7 @@
             </tr>
 
             <%
-                List<Entity> locations = PersistorFactory.getPersistor().getEntities(Location.class);
+                List<Entity> locations = Persistor.getPersistorInstance().getEntities(Location.class);
                 for (Entity entity: locations ) {
                     Location loc = (Location)entity;
 

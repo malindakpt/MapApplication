@@ -1,11 +1,12 @@
 package util;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
-public class HibernateUtil {
+public class HibernateUtilqw {
 
     private static final SessionFactory sessionFactory = buildSessionFactory();
 
@@ -17,6 +18,7 @@ public class HibernateUtil {
             return cfg.configure().buildSessionFactory(serviceregistry);
         }
         catch (Throwable ex) {
+            ex.printStackTrace();
             throw new ExceptionInInitializerError(ex);
         }
     }

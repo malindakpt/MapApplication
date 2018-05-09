@@ -1,7 +1,7 @@
 package servlet;
 
 import entitiy.Location;
-import manager.PersistorFactory;
+import manager.Persistor;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +17,7 @@ public class SaveLocation extends HttpServlet {
             Double lon = Double.parseDouble(request.getParameter("lon"));
 
             Location location = new Location(name, lat, lon);
-            PersistorFactory.getPersistor().add(location);
+            Persistor.getPersistorInstance().add(location);
         } catch (Exception e){
 
         }

@@ -1,7 +1,7 @@
 package manager;
 
 import entitiy.BaseEntity.Entity;
-import util.HibernateUtil;
+import util.HibernateUtilqw;
 import manager.BaseManager.PersistanceInterface;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -23,7 +23,7 @@ public class SQLEntityManager implements PersistanceInterface {
     public void add(Entity entity){
         Session session = null;
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
+            session = HibernateUtilqw.getSessionFactory().openSession();
             session.beginTransaction();
             session.save(entity);
             session.getTransaction().commit();
@@ -36,7 +36,7 @@ public class SQLEntityManager implements PersistanceInterface {
 
     @Override
     public void delete(Class entity, int value) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtilqw.getSessionFactory().openSession();
         Transaction tx = null;
 
         try {
@@ -60,7 +60,7 @@ public class SQLEntityManager implements PersistanceInterface {
         Transaction tx = null;
 
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
+            session = HibernateUtilqw.getSessionFactory().openSession();
             tx = session.beginTransaction();
             entities = session.createQuery("FROM "+entity.getSimpleName()).list();
 

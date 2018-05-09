@@ -1,7 +1,7 @@
 package servlet;
 
 import entitiy.Location;
-import manager.PersistorFactory;
+import manager.Persistor;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +12,7 @@ public class DeleteLocation extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-            PersistorFactory.getPersistor().delete(Location.class, id);
+            Persistor.getPersistorInstance().delete(Location.class, id);
         } catch (Exception e){
 
         }
