@@ -1,8 +1,6 @@
 <%@ page import="entitiy.BaseEntity.Entity" %>
-<%@ page import="manager.SQLEntityManager" %>
 <%@ page import="java.util.List" %>
 <%@ page import="entitiy.Location" %>
-<%@ page import="manager.MockEntityManager" %>
 <%@ page import="manager.Persistor" %>
 <style>
     #map {
@@ -17,7 +15,7 @@
     function initMap(){
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 12,
-            center: { lat: 6.9258278, lng:  79.8812892 }
+            center: { lat: 7.025356, lng:  79.880083 }
         });
 
         <%
