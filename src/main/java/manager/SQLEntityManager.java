@@ -1,19 +1,18 @@
 package manager;
 
 import entitiy.BaseEntity.Entity;
-import factory.HibernateUtil;
+import util.HibernateUtil;
 import manager.BaseManager.PersistanceInterface;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import java.util.List;
 
-
 public class SQLEntityManager implements PersistanceInterface {
 
     private static PersistanceInterface instance;
 
-    public static PersistanceInterface getInstance(){
+    protected static PersistanceInterface getInstance(){
         if(instance == null){
             instance = new SQLEntityManager();
         }
@@ -56,7 +55,7 @@ public class SQLEntityManager implements PersistanceInterface {
 
     @Override
     public List<Entity> getEntities(Class entity){
-        List<Entity> entities;// = new ArrayList<Entity>();
+        List<Entity> entities;
         Session session = null;
         Transaction tx = null;
 

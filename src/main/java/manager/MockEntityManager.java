@@ -2,16 +2,10 @@ package manager;
 
 import entitiy.BaseEntity.Entity;
 import entitiy.Location;
-import factory.HibernateUtil;
 import manager.BaseManager.PersistanceInterface;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
 
 public class MockEntityManager implements PersistanceInterface{
 
@@ -19,7 +13,7 @@ public class MockEntityManager implements PersistanceInterface{
     private List<Entity> locations = new ArrayList<Entity>();
     private int countIdx = 0;
 
-    public static MockEntityManager getInstance(){
+    protected static MockEntityManager getInstance(){
         if(instance == null){
             instance = new MockEntityManager();
             instance.loadInitialData();

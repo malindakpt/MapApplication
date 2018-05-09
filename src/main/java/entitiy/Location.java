@@ -1,12 +1,8 @@
 package entitiy;
 
 import entitiy.BaseEntity.Entity;
-
 import javax.persistence.*;
 
-/**
- * Created by MalindaK on 5/7/2018.
- */
 @javax.persistence.Entity
 @Table(name = "location", catalog = "map", uniqueConstraints = {
         @UniqueConstraint(columnNames = "id")})
@@ -29,9 +25,6 @@ public class Location extends Entity {
         this.lat = lat;
         this.lon = lon;
     }
-
-
-
 
     @Column(name = "name", nullable = true, length = 40)
     public String getName() {

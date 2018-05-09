@@ -13,7 +13,6 @@ public class Entity  implements java.io.Serializable {
         return id;
     }
 
-
     public void setId(int id) {
         this.id = id;
     }

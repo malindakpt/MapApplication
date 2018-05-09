@@ -3,7 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="entitiy.Location" %>
 <%@ page import="manager.MockEntityManager" %>
-<%@ page import="factory.PersistorFactory" %>
+<%@ page import="manager.PersistorFactory" %>
 <style>
     #map {
         height: 400px;

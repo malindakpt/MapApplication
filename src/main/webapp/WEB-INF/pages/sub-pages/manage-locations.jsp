@@ -3,7 +3,7 @@
 <%@ page import="manager.SQLEntityManager" %>
 <%@ page import="entitiy.Location" %>
 <%@ page import="manager.MockEntityManager" %>
-<%@ page import="factory.PersistorFactory" %>
+<%@ page import="manager.PersistorFactory" %>
 <div class="w3-container">
     <button onclick="$('#addLocationModal').show()" class="w3-button w3-black float-right"><i class="fa fa-plus-circle"></i> Add Location</button>
     <h2>Location Manager</h2>
