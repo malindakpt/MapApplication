@@ -1,5 +1,5 @@
 function saveLocation() {
-    if(!isNaN($('#lat').val()) && !isNaN($('#lon').val()) && $('#name').val() !== '') {
+    if(!isNaN(parseFloat($('#lat').val())) && !isNaN(parseFloat($('#lon').val())) && $('#name').val() !== '') {
         $('#addLocationModal').hide();
         $.post('SaveLocation',
             {
@@ -8,9 +8,12 @@ function saveLocation() {
                 lon: $('#lon').val()
             },
             function (result) {
+                if(result){
+                    alert(result);
+                }
                 getAndSetPage('ManageLocations');
             }).fail(function () {
-                swal("Error", "Unexpected error occured", "error");
+                alert("Unexpected error occured");
             }
         );
     } else {
@@ -27,9 +30,12 @@ function deleteLocation(id) {
                 id: id,
             },
             function (result) {
+                if(result){
+                    alert(result);
+                }
                 getAndSetPage('ManageLocations');
             }).fail(function () {
-                swal("Error", "Unexpected error occured", "error");
+                alert("Unexpected error occured");
             }
         )
     }
